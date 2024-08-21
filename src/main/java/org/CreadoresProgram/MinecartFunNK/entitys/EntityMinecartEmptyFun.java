@@ -8,7 +8,7 @@ import cn.nukkit.nbt.tag.CompoundTag;
 public class EntityMinecartEmptyFun extends EntityMinecartEmpty{
   public EntityMinecartEmptyFun(FullChunk chunk, CompoundTag nbt){
     super(chunk, nbt);
-    this.setName("MinecartFun");
+    setName("MinecartFun");
   }
   @Override
   public boolean onUpdate(int currentTik){
@@ -53,5 +53,8 @@ public class EntityMinecartEmptyFun extends EntityMinecartEmpty{
   @Override
   public String getInteractButtonText(){
     return this.passengers.isEmpty() ? "§a§lEnter the §9MinecartFun!" : "";
+  }
+  public void setName(String name){
+    this.entityName = name;
   }
 }
