@@ -55,6 +55,7 @@ public class EntityMinecartEmptyFun extends EntityMinecartEmpty{
         this.motionY *= -0.4;
       }
     }
+    super.onUpdate(currentTik);
     return update || !onGround || Math.abs(this.motionX) > 0.00001 || Math.abs(this.motionY) > 0.00001 || Math.abs(this.motionZ) > 0.00001;
   }
 
