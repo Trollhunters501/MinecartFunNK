@@ -3,6 +3,8 @@ import cn.nukkit.entity.item.EntityMinecartEmpty;
 import cn.nukkit.Player;
 import cn.nukkit.block.Block;
 import cn.nukkit.math.Vector3;
+import cn.nukkit.level.format.FullChunk;
+import cn.nukkit.nbt.tag.CompoundTag;
 public class EntityMinecartEmptyFun extends EntityMinecartEmpty{
   public EntityMinecartEmptyFun(FullChunk chunk, CompoundTag nbt){
     super(chunk, nbt);
