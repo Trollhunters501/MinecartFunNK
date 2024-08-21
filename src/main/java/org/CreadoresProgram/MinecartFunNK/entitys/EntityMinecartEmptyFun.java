@@ -6,6 +6,7 @@ import cn.nukkit.math.Vector3;
 import cn.nukkit.level.format.FullChunk;
 import cn.nukkit.nbt.tag.CompoundTag;
 public class EntityMinecartEmptyFun extends EntityMinecartEmpty{
+  private String entityName;
   public EntityMinecartEmptyFun(FullChunk chunk, CompoundTag nbt){
     super(chunk, nbt);
     setName("MinecartFun");
