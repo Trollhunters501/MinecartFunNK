@@ -23,7 +23,9 @@ public class EntityMinecartEmptyFun extends EntityMinecartEmpty{
     this.lastUpdate = currentTik;
     boolean update = false;
     if(this.isAlive()){
-      if(this.passengers.get(0) == null || (!(this.passengers.get(0) instanceof Player) || this.passengers.size() > 1)) return false;
+      if(this.passengers.get(0) == null || (!(this.passengers.get(0) instanceof Player) || this.passengers.size() > 1)){
+        return super.onUpdate(currentTik);
+      }
       Player p = (Player) this.passengers.get(0);
       this.lastX = this.x;
       this.lastY = this.y;
@@ -53,7 +55,6 @@ public class EntityMinecartEmptyFun extends EntityMinecartEmpty{
         this.motionY *= -0.4;
       }
     }
-    super.onUpdate(currentTik);
     return update || !onGround || Math.abs(this.motionX) > 0.00001 || Math.abs(this.motionY) > 0.00001 || Math.abs(this.motionZ) > 0.00001;
   }
 
