@@ -8,7 +8,7 @@ import cn.nukkit.nbt.tag.CompoundTag;
 public class EntityMinecartEmptyFun extends EntityMinecartEmpty{
   public EntityMinecartEmptyFun(FullChunk chunk, CompoundTag nbt){
     super(chunk, nbt);
-    setName("MinecartFun");
+    this.setName("MinecartFun");
   }
   @Override
   public boolean onUpdate(int currentTik){
@@ -22,8 +22,8 @@ public class EntityMinecartEmptyFun extends EntityMinecartEmpty{
       this.lastX = this.x;
       this.lastY = this.y;
       this.lastZ = this.z;
-      this.motionX = -Math.sin(p.getPosition().getYaw() / 180 * Math.PI);
-      this.motionZ = Math.cos(p.getPosition().getYaw() / 180 * Math.PI);
+      this.motionX = -Math.sin(p.yaw / 180 * Math.PI);
+      this.motionZ = Math.cos(p.yaw / 180 * Math.PI);
       Block target = this.level.getBlock(this.add(this.motionX, 0, this.motionZ).round());
       Block target2 = this.level.getBlock(this.add(this.motionX, 0, this.motionZ).floor());
       if(target.getId() != 0 || target2.getId() != 0){ 
