@@ -1,0 +1,7 @@
+name: MinecartFunNK
+version: "1.0.0"
+api: "1.0.0"
+main: org.CreadoresProgram.MinecartFunNK.Main;
+author: Creadores Program
+load: STARTUP
+description: A fun Minecarts in Minecraft
