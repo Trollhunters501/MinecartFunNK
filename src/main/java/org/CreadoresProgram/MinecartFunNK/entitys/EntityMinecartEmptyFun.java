@@ -44,7 +44,7 @@ public class EntityMinecartEmptyFun extends EntityMinecartEmpty{
       move(this.motionX, this.motionY, this.motionZ);
       this.updateMovement();
       double friction = (double) 1 - this.getDrag();
-      if(onGround && (Math.abs(this.motionZ) > 0.00001 || Math.abs(this.motionZ) > 0.00001)){
+      if(onGround && (Math.abs(this.motionX) > 0.00001 || Math.abs(this.motionZ) > 0.00001)){
         friction = this.level.getBlock(new Vector3((int) Math.floor(this.x), (int) Math.floor(this.y - 1), ((int) Math.floor(this.z)) - 1)).getFrictionFactor() * friction;
       }
       this.motionX *= friction;
