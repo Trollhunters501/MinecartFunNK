@@ -16,6 +16,12 @@ public class EntityMinecartEmptyFun extends EntityMinecartEmpty{
     if(this.closed){
       return false;
     }
+
+    int tickDiff = currentTik - this.lastUpdate;
+    if(tikDiff <= 1){
+      return false;
+    }
+    this.lastUpdate = currentTick;
     boolean update = super.onUpdate(currentTik);
     update = false;
     if(this.isAlive()){
