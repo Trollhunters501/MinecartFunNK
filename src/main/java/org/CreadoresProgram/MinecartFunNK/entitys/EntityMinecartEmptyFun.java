@@ -4,6 +4,10 @@ import cn.nukkit.Player;
 import cn.nukkit.block.Block;
 import cn.nukkit.math.Vector3;
 public class EntityMinecartEmptyFun extends EntityMinecartEmpty{
+  public EntityMinecartEmptyFun(FullChunk chunk, CompoundTag nbt){
+    super(chunk, nbt);
+    setName("MinecartFun");
+  }
   @Override
   public boolean onUpdate(int currentTik){
     if(this.closed){
@@ -30,17 +34,22 @@ public class EntityMinecartEmptyFun extends EntityMinecartEmpty{
       }
       move(this.motionX, this.motionY, this.motionZ);
       this.updateMovement();
-      float friction = 1 - this.getDrag();
+      double friction = (double) 1 - this.getDrag();
       if(onGround && (Math.abs(this.motionZ) > 0.00001 || Math.abs(this.motionZ) > 0.00001)){
         friction = this.level.getBlock(new Vector3((int) Math.floor(this.x), (int) Math.floor(this.y - 1), ((int) Math.floor(this.z)) - 1)).getFrictionFactor() * friction;
       }
       this.motionX *= friction;
-      this.motionY *= 1 - this.getDrag();
+      this.motionY *= 1 - ((double) this.getDrag());
       this.motionZ *= friction;
       if(onGround){
         this.motionY *= -0.5;
       }
     }
     return update || !onGround || Math.abs(this.motionX) > 0.00001 || Math.abs(this.motionY) > 0.00001 || Math.abs(this.motionZ) > 0.00001;
+  }
+
+  @Override
+  public String getInteractButtonText(){
+    return this.passengers.isEmpty() ? "§a§lEnter the §9MinecartFun!" : "";
   }
 }
