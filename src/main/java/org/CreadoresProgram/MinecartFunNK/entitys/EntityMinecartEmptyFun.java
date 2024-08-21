@@ -20,12 +20,12 @@ public class EntityMinecartEmptyFun extends EntityMinecartEmpty{
     if(tickDiff <= 1){
       return false;
     }
-    this.lastUpdate = currentTik;
     boolean update = false;
     if(this.isAlive()){
-      if(this.passengers.get(0) == null || (!(this.passengers.get(0) instanceof Player) || this.passengers.size() > 1)){
-        return super.onUpdate(currentTik);
-      }
+      if(this.passengers == null) return super.onUpdate(currentTik);
+      if(this.passengers.isEmpty()) return super.onUpdate(currentTik);
+      if(this.passengers.size() > 1 || !(this.passengers.get(0) instanceof Player)) return super.onUpdate(currentTik);
+      this.lastUpdate = currentTik;
       Player p = (Player) this.passengers.get(0);
       this.lastX = this.x;
       this.lastY = this.y;
