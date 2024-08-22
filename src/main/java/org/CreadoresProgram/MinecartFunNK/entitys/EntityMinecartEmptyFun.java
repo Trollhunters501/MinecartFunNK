@@ -7,6 +7,7 @@ import cn.nukkit.level.format.FullChunk;
 import cn.nukkit.nbt.tag.CompoundTag;
 public class EntityMinecartEmptyFun extends EntityMinecartEmpty{
   private String entityName;
+  private boolean isJump2 = false;
   public EntityMinecartEmptyFun(FullChunk chunk, CompoundTag nbt){
     super(chunk, nbt);
     setName("MinecartFun");
@@ -34,15 +35,18 @@ public class EntityMinecartEmptyFun extends EntityMinecartEmpty{
       this.motionZ = Math.cos(p.yaw / 180 * Math.PI);
       Block target = this.level.getBlock(this.add(this.motionX, 0, this.motionZ).round());
       Block target2 = this.level.getBlock(this.add(this.motionX, 0, this.motionZ).floor());
-      if(target.getId() != 0 || target2.getId() != 0){ 
+      if(!isJump2 && (target.getId() != 0 || target2.getId() != 0)){ 
         this.motionY = 0.4 * 3;
-      }else{
+        isJump2 = true;
+      }else if(target.getId() == 0 && target2.getId() == 0){
         this.motionY -= 0.4;
+        isJump = false;
+      }else{
+        return super.onUpdate();
       }
       if(this.checkObstruction(this.x, this.y, this.z)){
         update = true;
       }
-      this.checkBlockCollision();
       setRotation(p.yaw, this.pitch);
       move(this.motionX, this.motionY, this.motionZ);
       this.updateMovement();
