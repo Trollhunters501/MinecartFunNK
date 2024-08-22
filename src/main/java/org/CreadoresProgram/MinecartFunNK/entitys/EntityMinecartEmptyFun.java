@@ -40,9 +40,9 @@ public class EntityMinecartEmptyFun extends EntityMinecartEmpty{
         isJump2 = true;
       }else if(target.getId() == 0 && target2.getId() == 0){
         this.motionY -= 0.4;
-        isJump = false;
+        isJump2 = false;
       }else{
-        return super.onUpdate();
+        return super.onUpdate(currentTik);
       }
       if(this.checkObstruction(this.x, this.y, this.z)){
         update = true;
