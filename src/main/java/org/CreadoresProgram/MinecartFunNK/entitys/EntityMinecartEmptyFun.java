@@ -42,6 +42,8 @@ public class EntityMinecartEmptyFun extends EntityMinecartEmpty{
       if(this.checkObstruction(this.x, this.y, this.z)){
         update = true;
       }
+      this.checkBlockCollision();
+      setRotation(p.yaw, this.pitch);
       move(this.motionX, this.motionY, this.motionZ);
       this.updateMovement();
       double friction = (double) 1 - this.getDrag();
